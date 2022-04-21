@@ -4,8 +4,55 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Added Tailwind for styling -->
     <script src="https://cdn.tailwindcss.com"></script>
     <title>Omegle Clone</title>
   </head>
-  <body></body>
+  <body
+    class="w-[100vw] h-[100vh] flex flex-col items-center justify-evenly bg-stone-200"
+  >
+    <div class="absolute top-4">
+      <h1 class="text-8xl font-bold uppercase text-green-50">Scalable Peer</h1>
+    </div>
+    <main
+      class="flex-grow flex flex-wrap items-center justify-center content-center"
+    >
+      <div
+        class="relative w-80 h-48 bg-white overflow-hidden rounded-2xl shadow-lg m-4 group cursor-pointer"
+      >
+        <video
+          class="self absolute h-full w-full object-cover"
+          autoplay
+          controls
+          muted
+        ></video>
+      </div>
+    </main>
+    <div id="buttonRack" class="absolute bottom-8 space-x-4">
+      <button
+        class="py-1 px-2 bg-white hover:bg-gray-100 rounded-lg shadow-lg disabled:opacity-75 disabled:line-through"
+        id="screen"
+        aria-state="0"
+        onclick="handleClick(this)"
+      >
+        Share Screen
+      </button>
+      <button
+        class="py-1 px-2 bg-white hover:bg-gray-100 rounded-lg shadow-lg disabled:opacity-75 disabled:line-through"
+        id="audio"
+        aria-state="1"
+        onclick="handleClick(this)"
+      >
+        Stop Audio
+      </button>
+      <button
+        class="py-1 px-2 bg-white hover:bg-gray-100 rounded-lg shadow-lg disabled:opacity-75 disabled:line-through"
+        id="video"
+        aria-state="1"
+        onclick="handleClick(this)"
+      >
+        Stop Video
+      </button>
+    </div>
+  </body>
 </html>
