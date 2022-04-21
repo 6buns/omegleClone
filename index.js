@@ -47,7 +47,7 @@ bun.on('peer-data-recieved', (data) => {
 	hTag.id = `m-${~~(Math.random() * 1000)}`
 	hTag.setAttribute(
 		"class",
-		"w-5/6 min-w-fit px-3 py-1 mx-4 bg-green-200 rounded-lg shadow self-start"
+		"w-fit px-3 py-1 mx-4 bg-green-200 rounded-lg shadow self-start"
 	);
 	hTag.innerText = data;
 	hTag.style.opacity = 1;
@@ -114,7 +114,7 @@ const handleInput = (e) => {
 	hTag.id = `m-${~~(Math.random() * 1000)}`
 	hTag.setAttribute(
 		"class",
-		"w-5/6 min-w-fit px-3 py-1 mx-4 bg-white rounded-lg shadow self-end"
+		"w-fit px-3 py-1 mx-4 bg-white rounded-lg shadow self-end"
 	);
 	hTag.innerText = data;
 	hTag.style.opacity = 1;
