@@ -1,12 +1,16 @@
+// Replace the constants with your own values.
+const SECRET = "f384d6193", ROOM_ID = "abcdef";
+
 let messagesArray = [], destroyer, bun;
 
 window.onload = () => {
 	destroyer = setInterval(() => destroyMessages(), 100)
 }
 
+// Create a Bun Instance
 bun = new Bun({
-	secret: "f384d6193",
-	room: "abcdef",
+	secret: SECRET,
+	room: ROOM_ID,
 });
 
 bun.on("new-peer", (event) => {
@@ -38,10 +42,12 @@ bun.on("new-remote-track", (event) => {
 
 bun.on("peer-left", (peer_id) => document.querySelector(`#remote-video-${peer_id}`).remove());
 
+// Handle error messages.
 bun.on('error', (e) => console.error(e))
 
 bun.on("screen-share-ended", (e) => document.getElementById("screen").disabled = false);
 
+// handle peer messages.
 bun.on('peer-data-recieved', (data) => {
 	const hTag = document.createElement("h1");
 	hTag.id = `m-${~~(Math.random() * 1000)}`
@@ -55,6 +61,7 @@ bun.on('peer-data-recieved', (data) => {
 	messagesArray.push(hTag.id)
 })
 
+// handling button clicks, and invoking different methods.
 const handleClick = (e) => {
 	switch (e.id) {
 		case "screen":
@@ -105,6 +112,7 @@ const handleClick = (e) => {
 	}
 };
 
+// extract textarea input and send message.
 const handleInput = (e) => {
 	let data = document.querySelector('#chat').value;
 	data = data.trim();
@@ -123,6 +131,7 @@ const handleInput = (e) => {
 	document.querySelector("#chat").value = "";
 }
 
+// remove messages that have been seen.
 const destroyMessages = () => {
 	if (messagesArray.length > 0) {
 		let toRemove = [], n
